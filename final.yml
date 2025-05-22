@@ -1,0 +1,14 @@
+name: Trigger Jenkins Job
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Jenkins Job via curl
+        run: |
+          curl -X POST "http://192.168.1.100:8080/job/TestJob/build?token=mysecrettoken"
